@@ -1,0 +1,11 @@
+{"case_id":"exact-01","question":"What is The Signal Garden about?","relevant_chunk_ids":["demo:movie:signal-garden::c000"]}
+{"case_id":"exact-02","question":"Describe Paper Moons.","relevant_chunk_ids":["demo:movie:paper-moons::c000"]}
+{"case_id":"exact-03","question":"What happens in Borrowed Weather?","relevant_chunk_ids":["demo:tv:borrowed-weather::c000"]}
+{"case_id":"theme-01","question":"Which story examines environmental inequality and communities left with storms?","relevant_chunk_ids":["demo:tv:borrowed-weather::c000"]}
+{"case_id":"theme-02","question":"Find a story about grief, imagination, and two sisters.","relevant_chunk_ids":["demo:movie:paper-moons::c000"]}
+{"case_id":"theme-03","question":"Which title explores disability adaptation through music?","relevant_chunk_ids":["demo:movie:winter-orchestra::c000"]}
+{"case_id":"theme-04","question":"What story is concerned with fame, consent, and identity after childhood celebrity?","relevant_chunk_ids":["demo:tv:after-the-applause::c000"]}
+{"case_id":"plot-01","question":"An archivist discovers why a city was evacuated by cataloguing ordinary objects.","relevant_chunk_ids":["demo:tv:archive-of-small-things::c000"]}
+{"case_id":"plot-02","question":"Which title pairs a food inspector with a street magician?","relevant_chunk_ids":["demo:movie:last-night-market::c000"]}
+{"case_id":"plot-03","question":"A translator and radio host bond through mistaken private voice messages.","relevant_chunk_ids":["demo:tv:second-language::c000"]}
+

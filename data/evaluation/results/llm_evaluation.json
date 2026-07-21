@@ -1,0 +1,226 @@
+{
+  "generated_at": "2026-07-21T19:25:10.973149Z",
+  "model": "llama-3.1-8b-instant",
+  "retrieval_strategy": "bm25",
+  "embedding_backend": "hashing",
+  "case_count": 5,
+  "selection_metric": "composite",
+  "best_prompt_variant": "strict",
+  "best_score": 1.0,
+  "prompt_variants": {
+    "baseline": {
+      "prompt_variant": "baseline",
+      "metrics": {
+        "relevance": 1.0,
+        "groundedness": 1.0,
+        "policy_compliance": 0.0,
+        "composite": 0.6666666666666666
+      },
+      "cases": [
+        {
+          "case_id": "answer-01",
+          "question": "What social problem drives Borrowed Weather?",
+          "reference": "Wealthy districts buy perfect weather while other neighborhoods endure endless storms, leading residents to organize for environmental justice.",
+          "answerable": true,
+          "answer": "The social problem driving \"Borrowed Weather\" is environmental injustice and the unequal distribution of resources, specifically access to clean and perfect weather, which disproportionately affects low-income neighborhoods.",
+          "retrieved_chunk_ids": [
+            "demo:tv:borrowed-weather::c000"
+          ],
+          "judgement": {
+            "relevance": 2,
+            "groundedness": 2,
+            "explanation": "The assistant's answer accurately reflects the reference facts, specifically mentioning environmental injustice and unequal distribution of resources, which are key aspects of the Borrowed Weather concept."
+          },
+          "policy_compliant": false
+        },
+        {
+          "case_id": "answer-02",
+          "question": "How does The Winter Orchestra portray adaptation?",
+          "reference": "A conductor who has lost her hearing teaches an amateur orchestra through vibration and visual cues.",
+          "answerable": true,
+          "answer": "Based on the provided evidence, The Winter Orchestra portrays adaptation by:\n\n- Featuring a conductor who adapts to her new reality after losing her hearing by teaching an amateur orchestra to perform through vibration and visual cues.\n- Highlighting the community's adaptation to the conductor's new method, showcasing the power of collective adaptation and resilience.\n\nThis portrayal of adaptation is a central theme in the story, emphasizing the importance of flexibility and creativity in the face of change.",
+          "retrieved_chunk_ids": [
+            "demo:movie:winter-orchestra::c000",
+            "demo:movie:signal-garden::c000",
+            "demo:tv:after-the-applause::c000",
+            "demo:tv:archive-of-small-things::c000",
+            "demo:movie:paper-moons::c000"
+          ],
+          "judgement": {
+            "relevance": 2,
+            "groundedness": 2,
+            "explanation": "The assistant's answer accurately reflects the reference fact and the retrieved evidence. The answer clearly explains how The Winter Orchestra portrays adaptation, highlighting the conductor's adaptation to her new reality and the community's adaptation to her new method. The answer is fully relevant and fully grounded, as it directly addresses the question and provides strong evidence from the retrieved text."
+          },
+          "policy_compliant": false
+        },
+        {
+          "case_id": "answer-03",
+          "question": "What connects the episodes of The Archive of Small Things?",
+          "reference": "Donated ordinary objects reveal interconnected stories and clues about a citywide evacuation.",
+          "answerable": true,
+          "answer": "The common thread connecting the episodes of The Archive of Small Things is the exploration of themes and storytelling styles found in the other evidence provided. \n\nEach of the other episodes (Paper Moons, Second Language, The Signal Garden, and The Last Night Market) shares elements of:\n\n1. Interconnected storytelling: Each episode weaves together seemingly unrelated elements to reveal a deeper narrative.\n2. Exploration of human emotions: These episodes delve into themes of grief, vulnerability, reconciliation, and belonging.\n3. Unconventional narratives: They often use unique storytelling methods, such as paper models predicting tides, mistranslations, and a repeating signal influenced by emotions.\n4. Focus on human connection: These episodes highlight the importance of relationships, community, and understanding in overcoming challenges.\n\nThese elements are likely to be present in The Archive of Small Things, making it a cohesive collection of stories that explore the human experience.",
+          "retrieved_chunk_ids": [
+            "demo:tv:archive-of-small-things::c000",
+            "demo:movie:paper-moons::c000",
+            "demo:tv:second-language::c000",
+            "demo:movie:signal-garden::c000",
+            "demo:movie:last-night-market::c000"
+          ],
+          "judgement": {
+            "relevance": 2,
+            "groundedness": 2,
+            "explanation": "The assistant's answer is fully relevant because it accurately identifies the common thread connecting the episodes of The Archive of Small Things. It is also fully grounded because it is supported by the reference facts and the retrieved evidence, which all explore interconnected storytelling, human emotions, unconventional narratives, and human connection."
+          },
+          "policy_compliant": false
+        },
+        {
+          "case_id": "answer-04",
+          "question": "What themes are explored in After the Applause?",
+          "reference": "Fame, consent, nostalgia, and rebuilding identity outside public attention.",
+          "answerable": true,
+          "answer": "Based on the evidence provided, the themes explored in \"After the Applause\" are:\n\n1. Fame\n2. Consent\n3. Nostalgia\n4. Rebuilding an identity outside public attention.",
+          "retrieved_chunk_ids": [
+            "demo:tv:after-the-applause::c000",
+            "demo:tv:archive-of-small-things::c000",
+            "demo:tv:borrowed-weather::c000",
+            "demo:movie:winter-orchestra::c000",
+            "demo:movie:signal-garden::c000"
+          ],
+          "judgement": {
+            "relevance": 2,
+            "groundedness": 2,
+            "explanation": "The assistant's answer directly matches the reference facts provided, and the evidence supports the themes mentioned."
+          },
+          "policy_compliant": false
+        },
+        {
+          "case_id": "answer-05",
+          "question": "Who composed the soundtrack for The Signal Garden?",
+          "reference": "The indexed corpus does not contain this information; the assistant should refuse.",
+          "answerable": false,
+          "answer": "Unfortunately, the evidence provided does not mention the soundtrack composer for \"The Signal Garden.\"",
+          "retrieved_chunk_ids": [
+            "demo:movie:signal-garden::c000",
+            "demo:tv:after-the-applause::c000",
+            "demo:movie:winter-orchestra::c000",
+            "demo:tv:borrowed-weather::c000",
+            "demo:tv:archive-of-small-things::c000"
+          ],
+          "judgement": {
+            "relevance": 2,
+            "groundedness": 2,
+            "explanation": "The assistant clearly refused to provide an answer when the requested fact was absent from the evidence and the reference confirmed its absence."
+          },
+          "policy_compliant": false
+        }
+      ]
+    },
+    "strict": {
+      "prompt_variant": "strict",
+      "metrics": {
+        "relevance": 1.0,
+        "groundedness": 1.0,
+        "policy_compliance": 1.0,
+        "composite": 1.0
+      },
+      "cases": [
+        {
+          "case_id": "answer-01",
+          "question": "What social problem drives Borrowed Weather?",
+          "reference": "Wealthy districts buy perfect weather while other neighborhoods endure endless storms, leading residents to organize for environmental justice.",
+          "answerable": true,
+          "answer": "The social problem driving Borrowed Weather is environmental inequality and the exploitation of low-income neighborhoods for the benefit of wealthier areas [1].",
+          "retrieved_chunk_ids": [
+            "demo:tv:borrowed-weather::c000"
+          ],
+          "judgement": {
+            "relevance": 2,
+            "groundedness": 2,
+            "explanation": "The assistant's answer accurately reflects the reference fact that wealthy districts buy perfect weather while other neighborhoods endure endless storms, and that residents organize for environmental justice. The answer also provides a clear explanation of the social problem driving Borrowed Weather, which is in line with the retrieved evidence."
+          },
+          "policy_compliant": true
+        },
+        {
+          "case_id": "answer-02",
+          "question": "How does The Winter Orchestra portray adaptation?",
+          "reference": "A conductor who has lost her hearing teaches an amateur orchestra through vibration and visual cues.",
+          "answerable": true,
+          "answer": "The Winter Orchestra portrays adaptation by showing a celebrated conductor teaching an amateur orchestra to perform through vibration and visual cues after losing her hearing [1]. This demonstrates the ability to adapt to a new situation and find alternative ways to achieve a goal.",
+          "retrieved_chunk_ids": [
+            "demo:movie:winter-orchestra::c000",
+            "demo:movie:signal-garden::c000",
+            "demo:tv:after-the-applause::c000",
+            "demo:tv:archive-of-small-things::c000",
+            "demo:movie:paper-moons::c000"
+          ],
+          "judgement": {
+            "relevance": 2,
+            "groundedness": 2,
+            "explanation": "The assistant's answer directly references the reference fact about the conductor teaching through vibration and visual cues, and accurately applies it to the concept of adaptation. The explanation is clear and concise, demonstrating a strong understanding of the reference fact and its relevance to the question."
+          },
+          "policy_compliant": true
+        },
+        {
+          "case_id": "answer-03",
+          "question": "What connects the episodes of The Archive of Small Things?",
+          "reference": "Donated ordinary objects reveal interconnected stories and clues about a citywide evacuation.",
+          "answerable": true,
+          "answer": "The episodes of The Archive of Small Things are connected by their focus on ordinary objects and their ability to reveal interconnected stories [1].",
+          "retrieved_chunk_ids": [
+            "demo:tv:archive-of-small-things::c000",
+            "demo:movie:paper-moons::c000",
+            "demo:tv:second-language::c000",
+            "demo:movie:signal-garden::c000",
+            "demo:movie:last-night-market::c000"
+          ],
+          "judgement": {
+            "relevance": 2,
+            "groundedness": 2,
+            "explanation": "The assistant's answer is fully relevant because it directly addresses the question and provides a clear connection between the episodes. It is also fully grounded because it is supported by the evidence, which mentions 'ordinary objects' and 'interconnected stories' in the context of the archivist's catalogue."
+          },
+          "policy_compliant": true
+        },
+        {
+          "case_id": "answer-04",
+          "question": "What themes are explored in After the Applause?",
+          "reference": "Fame, consent, nostalgia, and rebuilding identity outside public attention.",
+          "answerable": true,
+          "answer": "The themes explored in After the Applause include:\n- Fame [1]\n- Consent [1]\n- Nostalgia [1]\n- Rebuilding an identity outside public attention [1]",
+          "retrieved_chunk_ids": [
+            "demo:tv:after-the-applause::c000",
+            "demo:tv:archive-of-small-things::c000",
+            "demo:tv:borrowed-weather::c000",
+            "demo:movie:winter-orchestra::c000",
+            "demo:movie:signal-garden::c000"
+          ],
+          "judgement": {
+            "relevance": 2,
+            "groundedness": 2,
+            "explanation": "The assistant's answer is fully relevant because it includes all the requested themes. It is also fully grounded because the evidence provided in the retrieved text directly supports the assistant's answer."
+          },
+          "policy_compliant": true
+        },
+        {
+          "case_id": "answer-05",
+          "question": "Who composed the soundtrack for The Signal Garden?",
+          "reference": "The indexed corpus does not contain this information; the assistant should refuse.",
+          "answerable": false,
+          "answer": "I don't have enough indexed evidence to answer that.",
+          "retrieved_chunk_ids": [
+            "demo:movie:signal-garden::c000",
+            "demo:tv:after-the-applause::c000",
+            "demo:movie:winter-orchestra::c000",
+            "demo:tv:borrowed-weather::c000",
+            "demo:tv:archive-of-small-things::c000"
+          ],
+          "judgement": {
+            "relevance": 2,
+            "groundedness": 2,
+            "explanation": "The assistant's response is fully relevant because it directly addresses the question by stating the requested fact is absent. It is also fully grounded because the evidence provided does not contain the requested information, aligning with the reference fact."
+          },
+          "policy_compliant": true
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,817 @@
+{
+  "selection_metric": "mrr",
+  "best_strategy": "bm25",
+  "best_score": 1.0,
+  "strategies": {
+    "bm25": {
+      "strategy": "bm25",
+      "top_k": 5,
+      "case_count": 10,
+      "metrics": {
+        "hit_rate": 1.0,
+        "mrr": 1.0,
+        "recall_at_k": 1.0,
+        "precision_at_k": 0.32333333333333336,
+        "mean_latency_ms": 1.4528300000165473
+      },
+      "cases": [
+        {
+          "case_id": "exact-01",
+          "question": "What is The Signal Garden about?",
+          "relevant_chunk_ids": [
+            "demo:movie:signal-garden::c000"
+          ],
+          "retrieved_chunk_ids": [
+            "demo:movie:signal-garden::c000",
+            "demo:movie:paper-moons::c000",
+            "demo:tv:after-the-applause::c000",
+            "demo:tv:archive-of-small-things::c000",
+            "demo:movie:winter-orchestra::c000"
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "recall_at_k": 1.0,
+          "precision_at_k": 0.2,
+          "latency_ms": 13.644000000567758
+        },
+        {
+          "case_id": "exact-02",
+          "question": "Describe Paper Moons.",
+          "relevant_chunk_ids": [
+            "demo:movie:paper-moons::c000"
+          ],
+          "retrieved_chunk_ids": [
+            "demo:movie:paper-moons::c000"
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "recall_at_k": 1.0,
+          "precision_at_k": 1.0,
+          "latency_ms": 0.06450000000768341
+        },
+        {
+          "case_id": "exact-03",
+          "question": "What happens in Borrowed Weather?",
+          "relevant_chunk_ids": [
+            "demo:tv:borrowed-weather::c000"
+          ],
+          "retrieved_chunk_ids": [
+            "demo:tv:borrowed-weather::c000",
+            "demo:tv:archive-of-small-things::c000"
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "recall_at_k": 1.0,
+          "precision_at_k": 0.5,
+          "latency_ms": 0.05669999882229604
+        },
+        {
+          "case_id": "theme-01",
+          "question": "Which story examines environmental inequality and communities left with storms?",
+          "relevant_chunk_ids": [
+            "demo:tv:borrowed-weather::c000"
+          ],
+          "retrieved_chunk_ids": [
+            "demo:tv:borrowed-weather::c000",
+            "demo:tv:after-the-applause::c000",
+            "demo:movie:paper-moons::c000",
+            "demo:movie:winter-orchestra::c000",
+            "demo:tv:archive-of-small-things::c000"
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "recall_at_k": 1.0,
+          "precision_at_k": 0.2,
+          "latency_ms": 0.13620000027003698
+        },
+        {
+          "case_id": "theme-02",
+          "question": "Find a story about grief, imagination, and two sisters.",
+          "relevant_chunk_ids": [
+            "demo:movie:paper-moons::c000"
+          ],
+          "retrieved_chunk_ids": [
+            "demo:movie:paper-moons::c000",
+            "demo:movie:winter-orchestra::c000",
+            "demo:tv:archive-of-small-things::c000",
+            "demo:tv:second-language::c000",
+            "demo:movie:last-night-market::c000"
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "recall_at_k": 1.0,
+          "precision_at_k": 0.2,
+          "latency_ms": 0.10370000018156134
+        },
+        {
+          "case_id": "theme-03",
+          "question": "Which title explores disability adaptation through music?",
+          "relevant_chunk_ids": [
+            "demo:movie:winter-orchestra::c000"
+          ],
+          "retrieved_chunk_ids": [
+            "demo:movie:winter-orchestra::c000",
+            "demo:tv:second-language::c000",
+            "demo:movie:paper-moons::c000"
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "recall_at_k": 1.0,
+          "precision_at_k": 0.3333333333333333,
+          "latency_ms": 0.06880000000819564
+        },
+        {
+          "case_id": "theme-04",
+          "question": "What story is concerned with fame, consent, and identity after childhood celebrity?",
+          "relevant_chunk_ids": [
+            "demo:tv:after-the-applause::c000"
+          ],
+          "retrieved_chunk_ids": [
+            "demo:tv:after-the-applause::c000",
+            "demo:movie:winter-orchestra::c000",
+            "demo:movie:paper-moons::c000",
+            "demo:tv:archive-of-small-things::c000",
+            "demo:tv:borrowed-weather::c000"
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "recall_at_k": 1.0,
+          "precision_at_k": 0.2,
+          "latency_ms": 0.1098000011552358
+        },
+        {
+          "case_id": "plot-01",
+          "question": "An archivist discovers why a city was evacuated by cataloguing ordinary objects.",
+          "relevant_chunk_ids": [
+            "demo:tv:archive-of-small-things::c000"
+          ],
+          "retrieved_chunk_ids": [
+            "demo:tv:archive-of-small-things::c000",
+            "demo:tv:borrowed-weather::c000",
+            "demo:movie:last-night-market::c000",
+            "demo:movie:signal-garden::c000",
+            "demo:movie:winter-orchestra::c000"
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "recall_at_k": 1.0,
+          "precision_at_k": 0.2,
+          "latency_ms": 0.10019999899668619
+        },
+        {
+          "case_id": "plot-02",
+          "question": "Which title pairs a food inspector with a street magician?",
+          "relevant_chunk_ids": [
+            "demo:movie:last-night-market::c000"
+          ],
+          "retrieved_chunk_ids": [
+            "demo:movie:last-night-market::c000",
+            "demo:movie:signal-garden::c000",
+            "demo:tv:borrowed-weather::c000",
+            "demo:movie:paper-moons::c000",
+            "demo:tv:second-language::c000"
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "recall_at_k": 1.0,
+          "precision_at_k": 0.2,
+          "latency_ms": 0.1095000006898772
+        },
+        {
+          "case_id": "plot-03",
+          "question": "A translator and radio host bond through mistaken private voice messages.",
+          "relevant_chunk_ids": [
+            "demo:tv:second-language::c000"
+          ],
+          "retrieved_chunk_ids": [
+            "demo:tv:second-language::c000",
+            "demo:movie:signal-garden::c000",
+            "demo:movie:winter-orchestra::c000",
+            "demo:movie:paper-moons::c000",
+            "demo:movie:last-night-market::c000"
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "recall_at_k": 1.0,
+          "precision_at_k": 0.2,
+          "latency_ms": 0.13489999946614262
+        }
+      ]
+    },
+    "vector": {
+      "strategy": "vector",
+      "top_k": 5,
+      "case_count": 10,
+      "metrics": {
+        "hit_rate": 1.0,
+        "mrr": 0.9,
+        "recall_at_k": 1.0,
+        "precision_at_k": 0.2,
+        "mean_latency_ms": 10.454320000280859
+      },
+      "cases": [
+        {
+          "case_id": "exact-01",
+          "question": "What is The Signal Garden about?",
+          "relevant_chunk_ids": [
+            "demo:movie:signal-garden::c000"
+          ],
+          "retrieved_chunk_ids": [
+            "demo:tv:borrowed-weather::c000",
+            "demo:movie:signal-garden::c000",
+            "demo:movie:paper-moons::c000",
+            "demo:movie:winter-orchestra::c000",
+            "demo:tv:second-language::c000"
+          ],
+          "hit_rate": 1.0,
+          "mrr": 0.5,
+          "recall_at_k": 1.0,
+          "precision_at_k": 0.2,
+          "latency_ms": 11.571000000913045
+        },
+        {
+          "case_id": "exact-02",
+          "question": "Describe Paper Moons.",
+          "relevant_chunk_ids": [
+            "demo:movie:paper-moons::c000"
+          ],
+          "retrieved_chunk_ids": [
+            "demo:movie:paper-moons::c000",
+            "demo:tv:borrowed-weather::c000",
+            "demo:tv:second-language::c000",
+            "demo:movie:signal-garden::c000",
+            "demo:movie:last-night-market::c000"
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "recall_at_k": 1.0,
+          "precision_at_k": 0.2,
+          "latency_ms": 12.6512000006187
+        },
+        {
+          "case_id": "exact-03",
+          "question": "What happens in Borrowed Weather?",
+          "relevant_chunk_ids": [
+            "demo:tv:borrowed-weather::c000"
+          ],
+          "retrieved_chunk_ids": [
+            "demo:tv:borrowed-weather::c000",
+            "demo:tv:archive-of-small-things::c000",
+            "demo:movie:last-night-market::c000",
+            "demo:movie:signal-garden::c000",
+            "demo:movie:paper-moons::c000"
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "recall_at_k": 1.0,
+          "precision_at_k": 0.2,
+          "latency_ms": 9.78170000053069
+        },
+        {
+          "case_id": "theme-01",
+          "question": "Which story examines environmental inequality and communities left with storms?",
+          "relevant_chunk_ids": [
+            "demo:tv:borrowed-weather::c000"
+          ],
+          "retrieved_chunk_ids": [
+            "demo:tv:after-the-applause::c000",
+            "demo:tv:borrowed-weather::c000",
+            "demo:movie:winter-orchestra::c000",
+            "demo:movie:paper-moons::c000",
+            "demo:tv:archive-of-small-things::c000"
+          ],
+          "hit_rate": 1.0,
+          "mrr": 0.5,
+          "recall_at_k": 1.0,
+          "precision_at_k": 0.2,
+          "latency_ms": 11.393999999199877
+        },
+        {
+          "case_id": "theme-02",
+          "question": "Find a story about grief, imagination, and two sisters.",
+          "relevant_chunk_ids": [
+            "demo:movie:paper-moons::c000"
+          ],
+          "retrieved_chunk_ids": [
+            "demo:movie:paper-moons::c000",
+            "demo:movie:signal-garden::c000",
+            "demo:movie:winter-orchestra::c000",
+            "demo:tv:second-language::c000",
+            "demo:movie:last-night-market::c000"
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "recall_at_k": 1.0,
+          "precision_at_k": 0.2,
+          "latency_ms": 9.752399999342742
+        },
+        {
+          "case_id": "theme-03",
+          "question": "Which title explores disability adaptation through music?",
+          "relevant_chunk_ids": [
+            "demo:movie:winter-orchestra::c000"
+          ],
+          "retrieved_chunk_ids": [
+            "demo:movie:winter-orchestra::c000",
+            "demo:tv:second-language::c000",
+            "demo:movie:paper-moons::c000",
+            "demo:movie:signal-garden::c000",
+            "demo:tv:borrowed-weather::c000"
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "recall_at_k": 1.0,
+          "precision_at_k": 0.2,
+          "latency_ms": 11.014400000931346
+        },
+        {
+          "case_id": "theme-04",
+          "question": "What story is concerned with fame, consent, and identity after childhood celebrity?",
+          "relevant_chunk_ids": [
+            "demo:tv:after-the-applause::c000"
+          ],
+          "retrieved_chunk_ids": [
+            "demo:tv:after-the-applause::c000",
+            "demo:movie:winter-orchestra::c000",
+            "demo:tv:borrowed-weather::c000",
+            "demo:movie:paper-moons::c000",
+            "demo:tv:archive-of-small-things::c000"
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "recall_at_k": 1.0,
+          "precision_at_k": 0.2,
+          "latency_ms": 10.200200000326731
+        },
+        {
+          "case_id": "plot-01",
+          "question": "An archivist discovers why a city was evacuated by cataloguing ordinary objects.",
+          "relevant_chunk_ids": [
+            "demo:tv:archive-of-small-things::c000"
+          ],
+          "retrieved_chunk_ids": [
+            "demo:tv:archive-of-small-things::c000",
+            "demo:tv:borrowed-weather::c000",
+            "demo:movie:signal-garden::c000",
+            "demo:movie:last-night-market::c000",
+            "demo:tv:second-language::c000"
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "recall_at_k": 1.0,
+          "precision_at_k": 0.2,
+          "latency_ms": 9.56409999889729
+        },
+        {
+          "case_id": "plot-02",
+          "question": "Which title pairs a food inspector with a street magician?",
+          "relevant_chunk_ids": [
+            "demo:movie:last-night-market::c000"
+          ],
+          "retrieved_chunk_ids": [
+            "demo:movie:last-night-market::c000",
+            "demo:movie:signal-garden::c000",
+            "demo:movie:winter-orchestra::c000",
+            "demo:tv:second-language::c000",
+            "demo:tv:borrowed-weather::c000"
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "recall_at_k": 1.0,
+          "precision_at_k": 0.2,
+          "latency_ms": 9.486300001299242
+        },
+        {
+          "case_id": "plot-03",
+          "question": "A translator and radio host bond through mistaken private voice messages.",
+          "relevant_chunk_ids": [
+            "demo:tv:second-language::c000"
+          ],
+          "retrieved_chunk_ids": [
+            "demo:tv:second-language::c000",
+            "demo:movie:winter-orchestra::c000",
+            "demo:movie:last-night-market::c000",
+            "demo:tv:borrowed-weather::c000",
+            "demo:movie:signal-garden::c000"
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "recall_at_k": 1.0,
+          "precision_at_k": 0.2,
+          "latency_ms": 9.127900000748923
+        }
+      ]
+    },
+    "hybrid": {
+      "strategy": "hybrid",
+      "top_k": 5,
+      "case_count": 10,
+      "metrics": {
+        "hit_rate": 1.0,
+        "mrr": 0.95,
+        "recall_at_k": 1.0,
+        "precision_at_k": 0.2,
+        "mean_latency_ms": 9.181619999981194
+      },
+      "cases": [
+        {
+          "case_id": "exact-01",
+          "question": "What is The Signal Garden about?",
+          "relevant_chunk_ids": [
+            "demo:movie:signal-garden::c000"
+          ],
+          "retrieved_chunk_ids": [
+            "demo:movie:signal-garden::c000",
+            "demo:movie:paper-moons::c000",
+            "demo:tv:borrowed-weather::c000",
+            "demo:movie:winter-orchestra::c000",
+            "demo:tv:after-the-applause::c000"
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "recall_at_k": 1.0,
+          "precision_at_k": 0.2,
+          "latency_ms": 9.187100000417558
+        },
+        {
+          "case_id": "exact-02",
+          "question": "Describe Paper Moons.",
+          "relevant_chunk_ids": [
+            "demo:movie:paper-moons::c000"
+          ],
+          "retrieved_chunk_ids": [
+            "demo:movie:paper-moons::c000",
+            "demo:tv:borrowed-weather::c000",
+            "demo:tv:second-language::c000",
+            "demo:movie:signal-garden::c000",
+            "demo:movie:last-night-market::c000"
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "recall_at_k": 1.0,
+          "precision_at_k": 0.2,
+          "latency_ms": 9.781599999769242
+        },
+        {
+          "case_id": "exact-03",
+          "question": "What happens in Borrowed Weather?",
+          "relevant_chunk_ids": [
+            "demo:tv:borrowed-weather::c000"
+          ],
+          "retrieved_chunk_ids": [
+            "demo:tv:borrowed-weather::c000",
+            "demo:tv:archive-of-small-things::c000",
+            "demo:movie:last-night-market::c000",
+            "demo:movie:signal-garden::c000",
+            "demo:movie:paper-moons::c000"
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "recall_at_k": 1.0,
+          "precision_at_k": 0.2,
+          "latency_ms": 12.01740000033169
+        },
+        {
+          "case_id": "theme-01",
+          "question": "Which story examines environmental inequality and communities left with storms?",
+          "relevant_chunk_ids": [
+            "demo:tv:borrowed-weather::c000"
+          ],
+          "retrieved_chunk_ids": [
+            "demo:tv:after-the-applause::c000",
+            "demo:tv:borrowed-weather::c000",
+            "demo:movie:paper-moons::c000",
+            "demo:movie:winter-orchestra::c000",
+            "demo:tv:archive-of-small-things::c000"
+          ],
+          "hit_rate": 1.0,
+          "mrr": 0.5,
+          "recall_at_k": 1.0,
+          "precision_at_k": 0.2,
+          "latency_ms": 8.365200001207995
+        },
+        {
+          "case_id": "theme-02",
+          "question": "Find a story about grief, imagination, and two sisters.",
+          "relevant_chunk_ids": [
+            "demo:movie:paper-moons::c000"
+          ],
+          "retrieved_chunk_ids": [
+            "demo:movie:paper-moons::c000",
+            "demo:movie:winter-orchestra::c000",
+            "demo:tv:second-language::c000",
+            "demo:movie:signal-garden::c000",
+            "demo:tv:archive-of-small-things::c000"
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "recall_at_k": 1.0,
+          "precision_at_k": 0.2,
+          "latency_ms": 10.463699998581433
+        },
+        {
+          "case_id": "theme-03",
+          "question": "Which title explores disability adaptation through music?",
+          "relevant_chunk_ids": [
+            "demo:movie:winter-orchestra::c000"
+          ],
+          "retrieved_chunk_ids": [
+            "demo:movie:winter-orchestra::c000",
+            "demo:tv:second-language::c000",
+            "demo:movie:paper-moons::c000",
+            "demo:movie:signal-garden::c000",
+            "demo:tv:borrowed-weather::c000"
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "recall_at_k": 1.0,
+          "precision_at_k": 0.2,
+          "latency_ms": 8.99089999984426
+        },
+        {
+          "case_id": "theme-04",
+          "question": "What story is concerned with fame, consent, and identity after childhood celebrity?",
+          "relevant_chunk_ids": [
+            "demo:tv:after-the-applause::c000"
+          ],
+          "retrieved_chunk_ids": [
+            "demo:tv:after-the-applause::c000",
+            "demo:movie:winter-orchestra::c000",
+            "demo:movie:paper-moons::c000",
+            "demo:tv:borrowed-weather::c000",
+            "demo:tv:archive-of-small-things::c000"
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "recall_at_k": 1.0,
+          "precision_at_k": 0.2,
+          "latency_ms": 9.327899999334477
+        },
+        {
+          "case_id": "plot-01",
+          "question": "An archivist discovers why a city was evacuated by cataloguing ordinary objects.",
+          "relevant_chunk_ids": [
+            "demo:tv:archive-of-small-things::c000"
+          ],
+          "retrieved_chunk_ids": [
+            "demo:tv:archive-of-small-things::c000",
+            "demo:tv:borrowed-weather::c000",
+            "demo:movie:last-night-market::c000",
+            "demo:movie:signal-garden::c000",
+            "demo:movie:winter-orchestra::c000"
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "recall_at_k": 1.0,
+          "precision_at_k": 0.2,
+          "latency_ms": 7.832299999790848
+        },
+        {
+          "case_id": "plot-02",
+          "question": "Which title pairs a food inspector with a street magician?",
+          "relevant_chunk_ids": [
+            "demo:movie:last-night-market::c000"
+          ],
+          "retrieved_chunk_ids": [
+            "demo:movie:last-night-market::c000",
+            "demo:movie:signal-garden::c000",
+            "demo:tv:borrowed-weather::c000",
+            "demo:movie:winter-orchestra::c000",
+            "demo:tv:second-language::c000"
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "recall_at_k": 1.0,
+          "precision_at_k": 0.2,
+          "latency_ms": 7.513399999879766
+        },
+        {
+          "case_id": "plot-03",
+          "question": "A translator and radio host bond through mistaken private voice messages.",
+          "relevant_chunk_ids": [
+            "demo:tv:second-language::c000"
+          ],
+          "retrieved_chunk_ids": [
+            "demo:tv:second-language::c000",
+            "demo:movie:winter-orchestra::c000",
+            "demo:movie:signal-garden::c000",
+            "demo:movie:last-night-market::c000",
+            "demo:movie:paper-moons::c000"
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "recall_at_k": 1.0,
+          "precision_at_k": 0.2,
+          "latency_ms": 8.336700000654673
+        }
+      ]
+    },
+    "vector_reranked": {
+      "strategy": "vector_reranked",
+      "top_k": 5,
+      "case_count": 10,
+      "metrics": {
+        "hit_rate": 1.0,
+        "mrr": 1.0,
+        "recall_at_k": 1.0,
+        "precision_at_k": 0.2,
+        "mean_latency_ms": 8.474460000252293
+      },
+      "cases": [
+        {
+          "case_id": "exact-01",
+          "question": "What is The Signal Garden about?",
+          "relevant_chunk_ids": [
+            "demo:movie:signal-garden::c000"
+          ],
+          "retrieved_chunk_ids": [
+            "demo:movie:signal-garden::c000",
+            "demo:tv:borrowed-weather::c000",
+            "demo:movie:paper-moons::c000",
+            "demo:movie:winter-orchestra::c000",
+            "demo:tv:archive-of-small-things::c000"
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "recall_at_k": 1.0,
+          "precision_at_k": 0.2,
+          "latency_ms": 8.007599999473314
+        },
+        {
+          "case_id": "exact-02",
+          "question": "Describe Paper Moons.",
+          "relevant_chunk_ids": [
+            "demo:movie:paper-moons::c000"
+          ],
+          "retrieved_chunk_ids": [
+            "demo:movie:paper-moons::c000",
+            "demo:tv:borrowed-weather::c000",
+            "demo:tv:second-language::c000",
+            "demo:movie:last-night-market::c000",
+            "demo:movie:signal-garden::c000"
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "recall_at_k": 1.0,
+          "precision_at_k": 0.2,
+          "latency_ms": 9.405900000274414
+        },
+        {
+          "case_id": "exact-03",
+          "question": "What happens in Borrowed Weather?",
+          "relevant_chunk_ids": [
+            "demo:tv:borrowed-weather::c000"
+          ],
+          "retrieved_chunk_ids": [
+            "demo:tv:borrowed-weather::c000",
+            "demo:tv:archive-of-small-things::c000",
+            "demo:movie:last-night-market::c000",
+            "demo:movie:signal-garden::c000",
+            "demo:movie:paper-moons::c000"
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "recall_at_k": 1.0,
+          "precision_at_k": 0.2,
+          "latency_ms": 8.971000001110951
+        },
+        {
+          "case_id": "theme-01",
+          "question": "Which story examines environmental inequality and communities left with storms?",
+          "relevant_chunk_ids": [
+            "demo:tv:borrowed-weather::c000"
+          ],
+          "retrieved_chunk_ids": [
+            "demo:tv:borrowed-weather::c000",
+            "demo:tv:after-the-applause::c000",
+            "demo:movie:winter-orchestra::c000",
+            "demo:movie:paper-moons::c000",
+            "demo:tv:archive-of-small-things::c000"
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "recall_at_k": 1.0,
+          "precision_at_k": 0.2,
+          "latency_ms": 8.727599999474478
+        },
+        {
+          "case_id": "theme-02",
+          "question": "Find a story about grief, imagination, and two sisters.",
+          "relevant_chunk_ids": [
+            "demo:movie:paper-moons::c000"
+          ],
+          "retrieved_chunk_ids": [
+            "demo:movie:paper-moons::c000",
+            "demo:movie:winter-orchestra::c000",
+            "demo:movie:signal-garden::c000",
+            "demo:tv:second-language::c000",
+            "demo:movie:last-night-market::c000"
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "recall_at_k": 1.0,
+          "precision_at_k": 0.2,
+          "latency_ms": 9.77700000112236
+        },
+        {
+          "case_id": "theme-03",
+          "question": "Which title explores disability adaptation through music?",
+          "relevant_chunk_ids": [
+            "demo:movie:winter-orchestra::c000"
+          ],
+          "retrieved_chunk_ids": [
+            "demo:movie:winter-orchestra::c000",
+            "demo:tv:second-language::c000",
+            "demo:movie:paper-moons::c000",
+            "demo:movie:signal-garden::c000",
+            "demo:tv:borrowed-weather::c000"
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "recall_at_k": 1.0,
+          "precision_at_k": 0.2,
+          "latency_ms": 8.287099999506609
+        },
+        {
+          "case_id": "theme-04",
+          "question": "What story is concerned with fame, consent, and identity after childhood celebrity?",
+          "relevant_chunk_ids": [
+            "demo:tv:after-the-applause::c000"
+          ],
+          "retrieved_chunk_ids": [
+            "demo:tv:after-the-applause::c000",
+            "demo:movie:winter-orchestra::c000",
+            "demo:movie:paper-moons::c000",
+            "demo:tv:borrowed-weather::c000",
+            "demo:tv:archive-of-small-things::c000"
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "recall_at_k": 1.0,
+          "precision_at_k": 0.2,
+          "latency_ms": 7.439100001647603
+        },
+        {
+          "case_id": "plot-01",
+          "question": "An archivist discovers why a city was evacuated by cataloguing ordinary objects.",
+          "relevant_chunk_ids": [
+            "demo:tv:archive-of-small-things::c000"
+          ],
+          "retrieved_chunk_ids": [
+            "demo:tv:archive-of-small-things::c000",
+            "demo:tv:borrowed-weather::c000",
+            "demo:movie:last-night-market::c000",
+            "demo:movie:signal-garden::c000",
+            "demo:tv:second-language::c000"
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "recall_at_k": 1.0,
+          "precision_at_k": 0.2,
+          "latency_ms": 7.883700000093086
+        },
+        {
+          "case_id": "plot-02",
+          "question": "Which title pairs a food inspector with a street magician?",
+          "relevant_chunk_ids": [
+            "demo:movie:last-night-market::c000"
+          ],
+          "retrieved_chunk_ids": [
+            "demo:movie:last-night-market::c000",
+            "demo:movie:signal-garden::c000",
+            "demo:tv:borrowed-weather::c000",
+            "demo:movie:winter-orchestra::c000",
+            "demo:tv:second-language::c000"
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "recall_at_k": 1.0,
+          "precision_at_k": 0.2,
+          "latency_ms": 8.04229999994277
+        },
+        {
+          "case_id": "plot-03",
+          "question": "A translator and radio host bond through mistaken private voice messages.",
+          "relevant_chunk_ids": [
+            "demo:tv:second-language::c000"
+          ],
+          "retrieved_chunk_ids": [
+            "demo:tv:second-language::c000",
+            "demo:movie:winter-orchestra::c000",
+            "demo:movie:last-night-market::c000",
+            "demo:movie:signal-garden::c000",
+            "demo:tv:borrowed-weather::c000"
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "recall_at_k": 1.0,
+          "precision_at_k": 0.2,
+          "latency_ms": 8.203299999877345
+        }
+      ]
+    }
+  },
+  "generated_at": "2026-07-21T19:16:24.084354Z",
+  "embedding_backend": "hashing",
+  "embedding_model": "BAAI/bge-small-en-v1.5"
+}
