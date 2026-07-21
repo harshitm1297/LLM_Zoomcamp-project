@@ -8,11 +8,13 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
-from moodlens.factory import assistant
+from cultural_mood_tracker.factory import assistant
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Ask the MoodLens RAG assistant a question.")
+    parser = argparse.ArgumentParser(
+        description="Ask the Cultural Mood Tracker RAG assistant a question."
+    )
     parser.add_argument("question")
     args = parser.parse_args()
     result = assistant().answer(args.question)
@@ -41,4 +43,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

@@ -51,7 +51,7 @@ class SentenceTransformerEmbedder:
 class HashingEmbedder:
     """Small deterministic fallback for smoke tests, not a replacement for semantic BGE search."""
 
-    model_name = "moodlens-hashing-v1"
+    model_name = "cultural-mood-tracker-hashing-v1"
 
     def __init__(self, dimensions: int = 512) -> None:
         self._dimensions = dimensions

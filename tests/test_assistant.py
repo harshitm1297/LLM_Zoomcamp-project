@@ -1,8 +1,8 @@
 import unittest
 
-from moodlens.assistant import MoodLensAssistant
-from moodlens.generation import GenerationResult
-from moodlens.models import Chunk, SearchHit
+from cultural_mood_tracker.assistant import CulturalMoodTrackerAssistant
+from cultural_mood_tracker.generation import GenerationResult
+from cultural_mood_tracker.models import Chunk, SearchHit
 
 
 class FakeRetriever:
@@ -26,7 +26,9 @@ class FakeGenerator:
 
 class AssistantTests(unittest.TestCase):
     def test_assistant_uses_retrieval_and_generation(self) -> None:
-        result = MoodLensAssistant(FakeRetriever(), FakeGenerator()).answer("What is the theme?")
+        result = CulturalMoodTrackerAssistant(FakeRetriever(), FakeGenerator()).answer(
+            "What is the theme?"
+        )
         self.assertTrue(result.text.endswith("[1]."))
         self.assertEqual(result.model, "fake-model")
         self.assertEqual(result.prompt_tokens, 10)

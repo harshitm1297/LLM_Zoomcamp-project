@@ -8,12 +8,14 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
-from moodlens.config import settings
-from moodlens.dlt_pipeline import inspect_local_pipeline
+from cultural_mood_tracker.config import settings
+from cultural_mood_tracker.dlt_pipeline import inspect_local_pipeline
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Inspect a persisted MoodLens dlt dataset.")
+    parser = argparse.ArgumentParser(
+        description="Inspect a persisted Cultural Mood Tracker dlt dataset."
+    )
     parser.add_argument("--source", choices=("demo", "tmdb"), default="demo")
     args = parser.parse_args()
     print(json.dumps(inspect_local_pipeline(settings(), args.source), indent=2))

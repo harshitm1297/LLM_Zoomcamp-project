@@ -2,8 +2,8 @@ import json
 import unittest
 from pathlib import Path
 
-from moodlens.chunking import chunk_documents
-from moodlens.sample_data import demo_documents
+from cultural_mood_tracker.chunking import chunk_documents
+from cultural_mood_tracker.sample_data import demo_documents
 
 
 class GoldenSetTests(unittest.TestCase):

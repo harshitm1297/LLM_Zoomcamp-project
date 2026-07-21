@@ -3,9 +3,9 @@ FROM python:3.12-slim
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
     PYTHONPATH=/app/src \
-    MOODLENS_DB_PATH=/app/runtime/moodlens.sqlite3 \
-    MOODLENS_DLT_DB_PATH=/app/runtime/moodlens_pipeline.duckdb \
-    MOODLENS_ARTIFACTS_DIR=/app/artifacts
+    CULTURAL_MOOD_TRACKER_DB_PATH=/app/runtime/cultural_mood_tracker.sqlite3 \
+    CULTURAL_MOOD_TRACKER_DLT_DB_PATH=/app/runtime/cultural_mood_tracker_pipeline.duckdb \
+    CULTURAL_MOOD_TRACKER_ARTIFACTS_DIR=/app/artifacts
 
 WORKDIR /app
 COPY requirements.txt ./
@@ -14,13 +14,13 @@ RUN pip install --no-cache-dir --upgrade pip \
     && pip install --no-cache-dir -r requirements.txt
 
 COPY . .
-RUN useradd --create-home --uid 10001 moodlens \
+RUN useradd --create-home --uid 10001 culturaltracker \
     && mkdir -p /app/runtime /app/artifacts \
-    && chown -R moodlens:moodlens /app
+    && chown -R culturaltracker:culturaltracker /app
 
-USER moodlens
+USER culturaltracker
 EXPOSE 8501
 HEALTHCHECK --interval=30s --timeout=5s --start-period=60s --retries=3 \
   CMD python -c "import urllib.request; urllib.request.urlopen('http://localhost:8501/_stcore/health')" || exit 1
 
-CMD ["sh", "-c", "test -f /app/runtime/moodlens.sqlite3 || python scripts/ingest.py --source demo; streamlit run app.py --server.address=0.0.0.0 --server.port=8501"]
+CMD ["sh", "-c", "test -f /app/runtime/cultural_mood_tracker.sqlite3 || python scripts/ingest.py --source demo; streamlit run app.py --server.address=0.0.0.0 --server.port=8501"]

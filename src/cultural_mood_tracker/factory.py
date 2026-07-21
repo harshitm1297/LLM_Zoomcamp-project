@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from functools import lru_cache
 
-from .assistant import MoodLensAssistant
+from .assistant import CulturalMoodTrackerAssistant
 from .config import settings
 from .database import Database
 from .embeddings import Embedder, make_embedder
@@ -23,9 +23,9 @@ def embedder() -> Embedder:
 
 
 @lru_cache(maxsize=1)
-def assistant() -> MoodLensAssistant:
+def assistant() -> CulturalMoodTrackerAssistant:
     config = settings()
-    return MoodLensAssistant(
+    return CulturalMoodTrackerAssistant(
         Retriever(
             database(),
             embedder(),

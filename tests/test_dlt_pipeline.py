@@ -5,14 +5,16 @@ import unittest
 from dataclasses import replace
 from pathlib import Path
 
-from moodlens.config import settings
-from moodlens.dlt_pipeline import (
+from cultural_mood_tracker.config import settings
+from cultural_mood_tracker.dlt_pipeline import (
+    DOCUMENT_COLUMNS,
     inspect_local_pipeline,
     load_demo_source,
     load_document_resource,
 )
-from moodlens.models import Document
-from moodlens.sample_data import demo_source_path
+from cultural_mood_tracker.models import Document
+from cultural_mood_tracker.sample_data import demo_source_path
+from cultural_mood_tracker.tmdb_source import build_tmdb_source
 
 
 class DltPipelineTests(unittest.TestCase):
@@ -56,6 +58,35 @@ class DltPipelineTests(unittest.TestCase):
             self.assertEqual(len(result.documents), 1)
             self.assertEqual(result.documents[0].text, "Updated")
             self.assertEqual(inspection["document_rows"], 2)
+
+    def test_tmdb_source_has_dependent_detail_and_review_resources(self) -> None:
+        source = build_tmdb_source(
+            api_key="not-used-during-source-construction",
+            language="en-US",
+            start_date="2025-01-01",
+            end_date="2026-12-31",
+            movie_limit=100,
+            tv_limit=100,
+            run_id="sample",
+            columns=DOCUMENT_COLUMNS,
+            sample=True,
+        )
+
+        self.assertEqual(
+            sorted(source.resources.keys()),
+            [
+                "movie_details",
+                "movie_reviews",
+                "movies",
+                "tv_details",
+                "tv_reviews",
+                "tv_shows",
+            ],
+        )
+        self.assertEqual(
+            sorted(resource.name for resource in source.resources.selected.values()),
+            ["movie_details", "movie_reviews", "tv_details", "tv_reviews"],
+        )
 
 
 if __name__ == "__main__":

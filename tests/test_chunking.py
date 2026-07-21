@@ -1,7 +1,7 @@
 import unittest
 
-from moodlens.chunking import chunk_document
-from moodlens.models import Document
+from cultural_mood_tracker.chunking import chunk_document
+from cultural_mood_tracker.models import Document
 
 
 class ChunkingTests(unittest.TestCase):

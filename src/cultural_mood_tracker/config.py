@@ -76,11 +76,13 @@ def settings() -> Settings:
         in {"1", "true", "yes", "on"},
         chunk_words=_integer("CHUNK_WORDS", 180),
         chunk_overlap=int(os.getenv("CHUNK_OVERLAP", "30")),
-        database_path=_path("MOODLENS_DB_PATH", "runtime/moodlens.sqlite3"),
-        dlt_database_path=_path(
-            "MOODLENS_DLT_DB_PATH", "runtime/moodlens_pipeline.duckdb"
+        database_path=_path(
+            "CULTURAL_MOOD_TRACKER_DB_PATH", "runtime/cultural_mood_tracker.sqlite3"
         ),
-        artifacts_dir=_path("MOODLENS_ARTIFACTS_DIR", "artifacts"),
+        dlt_database_path=_path(
+            "CULTURAL_MOOD_TRACKER_DLT_DB_PATH", "runtime/cultural_mood_tracker_pipeline.duckdb"
+        ),
+        artifacts_dir=_path("CULTURAL_MOOD_TRACKER_ARTIFACTS_DIR", "artifacts"),
     )
     if result.chunk_overlap < 0 or result.chunk_overlap >= result.chunk_words:
         raise ValueError("CHUNK_OVERLAP must be non-negative and smaller than CHUNK_WORDS")

@@ -2,9 +2,9 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from moodlens.database import Database
-from moodlens.models import Answer, Chunk, SearchHit
-from moodlens.telemetry import Telemetry
+from cultural_mood_tracker.database import Database
+from cultural_mood_tracker.models import Answer, Chunk, SearchHit
+from cultural_mood_tracker.telemetry import Telemetry
 
 
 class TelemetryTests(unittest.TestCase):

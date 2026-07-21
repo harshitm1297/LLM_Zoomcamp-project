@@ -9,10 +9,10 @@ import streamlit as st
 ROOT = Path(__file__).resolve().parent
 sys.path.insert(0, str(ROOT / "src"))
 
-from moodlens.config import settings
-from moodlens.factory import assistant, database, telemetry
+from cultural_mood_tracker.config import settings
+from cultural_mood_tracker.factory import assistant, database, telemetry
 
-st.set_page_config(page_title="MoodLens", page_icon="🎞️", layout="centered")
+st.set_page_config(page_title="Cultural Mood Tracker", page_icon="🎞️", layout="centered")
 st.markdown(
     """
     <style>
@@ -33,7 +33,7 @@ st.markdown(
     section[data-testid="stSidebar"] { background:white; }
     </style>
     <div class="hero">
-      <h1>MoodLens</h1>
+      <h1>Cultural Mood Tracker</h1>
       <p>Explore plots, themes, emotions, and cultural tensions through grounded evidence.</p>
     </div>
     """,

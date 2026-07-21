@@ -1,12 +1,12 @@
 import unittest
 
-from moodlens.evaluation import (
+from cultural_mood_tracker.evaluation import (
     RetrievalCase,
     evaluate_retrieval,
     evaluate_retrieval_strategies,
     reciprocal_rank,
 )
-from moodlens.models import Chunk, SearchHit
+from cultural_mood_tracker.models import Chunk, SearchHit
 
 
 class FakeRetriever:

@@ -4,8 +4,8 @@ from pathlib import Path
 
 import numpy as np
 
-from moodlens.database import Database
-from moodlens.models import Chunk
+from cultural_mood_tracker.database import Database
+from cultural_mood_tracker.models import Chunk
 
 
 def _chunk(identifier: str, title: str) -> Chunk:

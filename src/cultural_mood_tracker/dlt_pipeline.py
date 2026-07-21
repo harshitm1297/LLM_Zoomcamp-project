@@ -9,7 +9,7 @@ from typing import Any
 from .config import Settings
 from .models import Document
 
-PIPELINE_PREFIX = "moodlens"
+PIPELINE_PREFIX = "cultural_mood_tracker"
 TABLE_NAME = "documents"
 DOCUMENT_COLUMNS: dict[str, dict[str, object]] = {
     "document_id": {"data_type": "text", "nullable": False},
@@ -94,6 +94,9 @@ def _metadata(
     tables = sorted(
         name for name in pipeline.default_schema.tables if not name.startswith("_dlt")
     )
+    normalize_info = getattr(
+        getattr(pipeline, "last_trace", None), "last_normalize_info", None
+    )
     return {
         "pipeline": pipeline.pipeline_name,
         "dataset": pipeline.dataset_name,
@@ -105,6 +108,8 @@ def _metadata(
         "tables": tables,
         "table_count": len(tables),
         "document_rows": len(documents),
+        "load_info": str(load_info),
+        "normalize_info": str(normalize_info) if normalize_info is not None else None,
     }
 
 
@@ -178,9 +183,54 @@ def load_document_resource(
     )
 
 
+def load_tmdb_source(
+    *,
+    config: Settings,
+    run_id: str,
+    sample: bool = False,
+) -> LocalPipelineResult:
+    """Extract TMDB with dlt's declarative REST API source and load it locally."""
+    from .tmdb_source import build_tmdb_source
+
+    source = build_tmdb_source(
+        api_key=config.tmdb_api_key,
+        language=config.tmdb_language,
+        start_date=config.tmdb_start_date,
+        end_date=config.tmdb_end_date,
+        movie_limit=config.tmdb_movie_limit,
+        tv_limit=config.tmdb_tv_limit,
+        run_id=run_id,
+        columns=DOCUMENT_COLUMNS,
+        sample=sample,
+    )
+    pipeline = _pipeline(config, "tmdb")
+    load_info = pipeline.run(source)
+    loaded = _read_documents(pipeline, ingestion_run_id=run_id)
+    return LocalPipelineResult(
+        loaded,
+        _metadata(
+            pipeline,
+            load_info,
+            loaded,
+            write_disposition="merge",
+            incremental=False,
+        ),
+    )
+
+
+def _attach_pipeline(config: Settings, source: str) -> Any:
+    dlt = _dlt()
+    return dlt.attach(
+        pipeline_name=f"{PIPELINE_PREFIX}_{source}_ingestion",
+        pipelines_dir=str((config.artifacts_dir / "dlt_state").resolve()),
+        destination=dlt.destinations.duckdb(str(config.dlt_database_path.resolve())),
+        dataset_name=f"{PIPELINE_PREFIX}_{source}",
+    )
+
+
 def inspect_local_pipeline(config: Settings, source: str) -> dict[str, object]:
     """Inspect persisted dlt schema and rows without running extraction."""
-    pipeline = _pipeline(config, source)
+    pipeline = _attach_pipeline(config, source)
     documents = _read_documents(pipeline)
     tables = sorted(
         name for name in pipeline.default_schema.tables if not name.startswith("_dlt")
@@ -193,3 +243,9 @@ def inspect_local_pipeline(config: Settings, source: str) -> dict[str, object]:
         "document_rows": len(documents),
         "sample_document_ids": [document.document_id for document in documents[:5]],
     }
+
+
+def query_local_pipeline(config: Settings, source: str, query: str) -> Any:
+    """Run a read-only analytical query against an attached local dlt dataset."""
+    pipeline = _attach_pipeline(config, source)
+    return pipeline.dataset()(query).df()

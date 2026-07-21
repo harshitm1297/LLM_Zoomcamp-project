@@ -3,7 +3,7 @@ requires = ["setuptools>=75"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "moodlens"
+name = "cultural-mood-tracker"
 version = "0.1.0"
 description = "A local-first RAG assistant for exploring stories and cultural themes"
 requires-python = ">=3.12"

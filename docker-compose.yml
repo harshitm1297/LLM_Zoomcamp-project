@@ -1,7 +1,7 @@
 services:
   app:
     build: .
-    image: moodlens:local
+    image: cultural-mood-tracker:local
     ports:
       - "8501:8501"
     environment:
@@ -12,16 +12,16 @@ services:
       PROMPT_VARIANT: ${PROMPT_VARIANT:-strict}
       RETRIEVAL_TOP_K: ${RETRIEVAL_TOP_K:-5}
       RETRIEVAL_STRATEGY: ${RETRIEVAL_STRATEGY:-bm25}
-      MOODLENS_DLT_DB_PATH: /app/runtime/moodlens_pipeline.duckdb
+      CULTURAL_MOOD_TRACKER_DLT_DB_PATH: /app/runtime/cultural_mood_tracker_pipeline.duckdb
     volumes:
-      - moodlens-runtime:/app/runtime
-      - moodlens-artifacts:/app/artifacts
-      - model-cache:/home/moodlens/.cache/huggingface
+      - cultural-mood-tracker-runtime:/app/runtime
+      - cultural-mood-tracker-artifacts:/app/artifacts
+      - model-cache:/home/culturaltracker/.cache/huggingface
     restart: unless-stopped
 
   ingest-tmdb:
     build: .
-    image: moodlens:local
+    image: cultural-mood-tracker:local
     command: ["python", "scripts/ingest.py", "--source", "tmdb"]
     environment:
       TMDB_API_KEY: ${TMDB_API_KEY:-}
@@ -32,14 +32,14 @@ services:
       TMDB_TV_LIMIT: ${TMDB_TV_LIMIT:-100}
       EMBEDDING_BACKEND: ${EMBEDDING_BACKEND:-sentence-transformers}
       EMBEDDING_MODEL: ${EMBEDDING_MODEL:-BAAI/bge-small-en-v1.5}
-      MOODLENS_DLT_DB_PATH: /app/runtime/moodlens_pipeline.duckdb
+      CULTURAL_MOOD_TRACKER_DLT_DB_PATH: /app/runtime/cultural_mood_tracker_pipeline.duckdb
     volumes:
-      - moodlens-runtime:/app/runtime
-      - moodlens-artifacts:/app/artifacts
-      - model-cache:/home/moodlens/.cache/huggingface
+      - cultural-mood-tracker-runtime:/app/runtime
+      - cultural-mood-tracker-artifacts:/app/artifacts
+      - model-cache:/home/culturaltracker/.cache/huggingface
     profiles: ["tools"]
 
 volumes:
-  moodlens-runtime:
-  moodlens-artifacts:
+  cultural-mood-tracker-runtime:
+  cultural-mood-tracker-artifacts:
   model-cache:

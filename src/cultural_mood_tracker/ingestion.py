@@ -8,11 +8,15 @@ from pathlib import Path
 from .chunking import chunk_documents
 from .config import Settings
 from .database import Database
-from .dlt_pipeline import LocalPipelineResult, load_demo_source, load_document_resource
+from .dlt_pipeline import (
+    LocalPipelineResult,
+    load_demo_source,
+    load_document_resource,
+    load_tmdb_source,
+)
 from .embeddings import Embedder, make_embedder
 from .models import Document
 from .sample_data import demo_source_path
-from .tmdb import download_documents
 
 
 def _timestamp() -> str:
@@ -132,13 +136,20 @@ def ingest_demo(config: Settings, *, embedder: Embedder | None = None) -> dict[s
     )
 
 
-def ingest_tmdb(config: Settings, *, embedder: Embedder | None = None) -> dict[str, object]:
-    documents = download_documents(
-        api_key=config.tmdb_api_key,
-        language=config.tmdb_language,
-        start_date=config.tmdb_start_date,
-        end_date=config.tmdb_end_date,
-        movie_limit=config.tmdb_movie_limit,
-        tv_limit=config.tmdb_tv_limit,
+def ingest_tmdb(
+    config: Settings,
+    *,
+    embedder: Embedder | None = None,
+    sample: bool = False,
+) -> dict[str, object]:
+    created_at = _timestamp()
+    run_id = _run_id(created_at)
+    result = load_tmdb_source(config=config, run_id=run_id, sample=sample)
+    return _index_pipeline_result(
+        result,
+        source="tmdb",
+        created_at=created_at,
+        run_id=run_id,
+        config=config,
+        embedder=embedder,
     )
-    return ingest_documents(documents, source="tmdb", config=config, embedder=embedder)

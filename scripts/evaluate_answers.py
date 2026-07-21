@@ -11,12 +11,12 @@ sys.path.insert(0, str(ROOT / "src"))
 
 from groq import Groq
 
-from moodlens.assistant import MoodLensAssistant
-from moodlens.config import settings
-from moodlens.evaluation import judge_answer
-from moodlens.factory import database, embedder
-from moodlens.generation import GroqGenerator
-from moodlens.retrieval import Retriever
+from cultural_mood_tracker.assistant import CulturalMoodTrackerAssistant
+from cultural_mood_tracker.config import settings
+from cultural_mood_tracker.evaluation import judge_answer
+from cultural_mood_tracker.factory import database, embedder
+from cultural_mood_tracker.generation import GroqGenerator
+from cultural_mood_tracker.retrieval import Retriever
 
 REFUSAL = "I don't have enough indexed evidence to answer that."
 CITATION = re.compile(r"\[\d+\]")
@@ -40,7 +40,7 @@ def evaluate_variant(
         strategy=config.retrieval_strategy,
         enable_query_rewriting=config.enable_query_rewriting,
     )
-    application = MoodLensAssistant(
+    application = CulturalMoodTrackerAssistant(
         retriever,
         GroqGenerator(
             config.groq_api_key,

@@ -1,7 +1,7 @@
 import unittest
 
-from moodlens.generation import SYSTEM_PROMPT, build_user_prompt
-from moodlens.models import Chunk, SearchHit
+from cultural_mood_tracker.generation import SYSTEM_PROMPT, build_user_prompt
+from cultural_mood_tracker.models import Chunk, SearchHit
 
 
 class PromptTests(unittest.TestCase):

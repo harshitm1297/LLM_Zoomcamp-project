@@ -7,7 +7,7 @@ from .models import Answer
 from .retrieval import Retriever, normalize_query
 
 
-class MoodLensAssistant:
+class CulturalMoodTrackerAssistant:
     def __init__(self, retriever: Retriever, generator: Generator, *, top_k: int = 5) -> None:
         self.retriever = retriever
         self.generator = generator

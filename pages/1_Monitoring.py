@@ -9,10 +9,10 @@ import streamlit as st
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
-from moodlens.factory import telemetry
+from cultural_mood_tracker.factory import telemetry
 
-st.set_page_config(page_title="MoodLens Monitoring", page_icon="📈", layout="wide")
-st.title("MoodLens monitoring")
+st.set_page_config(page_title="Cultural Mood Tracker Monitoring", page_icon="📈", layout="wide")
+st.title("Cultural Mood Tracker monitoring")
 summary = telemetry().summary()
 rows = telemetry().rows()
 

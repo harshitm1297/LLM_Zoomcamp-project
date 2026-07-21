@@ -1,7 +1,7 @@
 import unittest
 
-from moodlens.models import Chunk, SearchHit
-from moodlens.retrieval import BM25Index, reciprocal_rank_fusion, rewrite_query
+from cultural_mood_tracker.models import Chunk, SearchHit
+from cultural_mood_tracker.retrieval import BM25Index, reciprocal_rank_fusion, rewrite_query
 
 
 class RetrievalStrategyTests(unittest.TestCase):

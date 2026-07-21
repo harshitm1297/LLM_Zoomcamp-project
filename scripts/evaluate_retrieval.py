@@ -8,10 +8,10 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
-from moodlens.config import settings
-from moodlens.evaluation import evaluate_retrieval_strategies, load_retrieval_cases
-from moodlens.factory import database, embedder
-from moodlens.retrieval import Retriever
+from cultural_mood_tracker.config import settings
+from cultural_mood_tracker.evaluation import evaluate_retrieval_strategies, load_retrieval_cases
+from cultural_mood_tracker.factory import database, embedder
+from cultural_mood_tracker.retrieval import Retriever
 
 
 def main() -> int:

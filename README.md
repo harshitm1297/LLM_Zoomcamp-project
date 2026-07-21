@@ -1,6 +1,6 @@
-# MoodLens
+# Cultural Mood Tracker
 
-MoodLens is a local-first retrieval-augmented generation application for exploring plots,
+Cultural Mood Tracker is a local-first retrieval-augmented generation application for exploring plots,
 emotions, and cultural themes in film and television descriptions. It retrieves relevant passages
 from a local SQLite knowledge base, asks a Groq-hosted language model to answer only from that
 evidence, and shows the evidence beside the answer.
@@ -28,7 +28,7 @@ available for evaluation.
 ## Problem and intended users
 
 Plot summaries and reviews contain useful cultural signals, but they are difficult to explore across
-many titles. MoodLens lets viewers, students, and cultural researchers ask questions such as:
+many titles. Cultural Mood Tracker lets viewers, students, and cultural researchers ask questions such as:
 
 - Which indexed story explores environmental inequality?
 - Find a title about grief and imagination.
@@ -88,12 +88,12 @@ Open `http://localhost:8501`. Streamlit navigation contains the monitoring page.
 
 An answerable plot question produces a grounded answer with numbered evidence citations:
 
-![Grounded MoodLens answer](docs/images/qna-grounded-answer.png)
+![Grounded Cultural Mood Tracker answer](docs/images/qna-grounded-answer.png)
 
 When the indexed passages do not contain the requested information, the chatbot refuses rather than
 inventing an answer:
 
-![MoodLens insufficient-evidence response](docs/images/qna-insufficient-evidence.png)
+![Cultural Mood Tracker insufficient-evidence response](docs/images/qna-insufficient-evidence.png)
 
 Ask one question from the terminal:
 
@@ -107,27 +107,39 @@ python scripts\ask.py "Which story explores environmental inequality?"
 
 1. Demo ingestion uses dlt's filesystem source and JSONL reader.
 2. File modification time is an incremental cursor, persisted in pipeline state.
-3. API-derived documents are exposed as a keyed dlt resource.
-4. `document_id` is the primary key and both sources use merge loading.
-5. Nested genres remain one typed JSON column, avoiding unnecessary child-table pollution.
-6. dlt normalizes into `runtime/moodlens_pipeline.duckdb` and records load IDs and schema state.
-7. The chunker reads the normalized `documents` table back through dlt's dataset API.
-8. Only then are chunks embedded and the SQLite retrieval index atomically replaced.
+3. TMDB ingestion is a declarative `@dlt.source` built with `RESTAPIConfig` and
+   `rest_api_resources`, matching the workshop's REST API pattern.
+4. dlt manages TMDB page-number pagination, the `results` data selector, and discovery limits.
+5. Dependent resources enrich each discovered title through detail and review endpoints.
+6. `document_id` is the primary key and both sources use merge loading.
+7. Nested genres remain one typed JSON column, avoiding unnecessary child-table pollution.
+8. dlt normalizes into `runtime/cultural_mood_tracker_pipeline.duckdb`; each manifest exposes load
+   information and the last normalize trace.
+9. The chunker reads the normalized `documents` table back through dlt's dataset API.
+10. Only then are chunks embedded and the SQLite retrieval index atomically replaced.
 
 Each run also writes a human-readable local snapshot under `artifacts/corpora/`. On an unchanged
 second demo run, dlt creates no new load package while the persisted eight-row dataset remains
 available for rebuilding the index.
 
-Inspect the persisted dataset without rerunning extraction:
+Inspect the persisted dataset without rerunning extraction. This uses `dlt.attach`, so it reads the
+saved pipeline state and local DuckDB destination rather than constructing a new extraction:
 
 ```powershell
 python scripts\inspect_pipeline.py --source demo
 ```
 
-For a live refresh, add `TMDB_API_KEY` to `.env`, adjust the configured dates and limits, and run:
+For a small live smoke test, add `TMDB_API_KEY` to `.env` and run:
 
 ```powershell
-python scripts\ingest.py --source tmdb
+python scripts\ingest.py --source tmdb --sample
+```
+
+Sample mode caps discovery at three movies and three TV shows. For a complete refresh using the
+dates and limits configured in `.env`, run:
+
+```powershell
+python scripts\ingest.py --source tmdb --full
 ```
 
 API keys are transmitted to TMDB but are never written into artifacts or error messages. The
@@ -218,6 +230,11 @@ The monitoring page contains six charts:
 
 It also shows summary metrics and recent interactions. All telemetry remains in local SQLite.
 
+The **Corpus Pipeline** page is a separate read-only dlt/DuckDB dashboard. It attaches to either the
+demo or TMDB pipeline, runs SQL through dlt's dataset API, and charts documents by medium, content
+type, and release year. This applies the workshop's attach-and-query dashboard pattern while keeping
+the project's serving interface in Streamlit.
+
 ## Docker Compose
 
 Create `.env`, set `GROQ_API_KEY`, and run:
@@ -254,6 +271,7 @@ without duplicates. GitHub Actions runs both isolated dlt/DuckDB integration tes
 ```text
 app.py                         Streamlit chat
 pages/1_Monitoring.py          Local monitoring dashboard with six charts
+pages/2_Corpus_Pipeline.py     Read-only dashboard over the attached dlt dataset
 data/corpus/                   Versioned zero-credential JSONL source
 data/evaluation/               Versioned golden sets and committed reports
 scripts/ingest.py              Demo or TMDB automated ingestion entry point
@@ -261,11 +279,11 @@ scripts/inspect_pipeline.py    Persisted dlt schema and row inspection
 scripts/ask.py                 Terminal RAG query
 scripts/evaluate_retrieval.py  Four-way retrieval evaluation
 scripts/evaluate_answers.py    Baseline-versus-strict LLM evaluation
-src/moodlens/
+src/cultural_mood_tracker/
   models.py                    Domain types
   chunking.py                  Stable overlapping chunks
-  tmdb.py                      Optional TMDB downloader
-  dlt_pipeline.py              Filesystem/resource ingestion, merge, state, dataset reads
+  tmdb_source.py               Declarative REST source, pagination, dependent resources
+  dlt_pipeline.py              Filesystem/REST loading, merge, traces, attach, dataset queries
   embeddings.py                BGE and deterministic smoke-test encoders
   database.py                  SQLite corpus and telemetry persistence
   retrieval.py                 BM25, vector, hybrid RRF, reranking, rewriting
