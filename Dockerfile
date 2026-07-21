@@ -4,6 +4,7 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
     PYTHONPATH=/app/src \
     MOODLENS_DB_PATH=/app/runtime/moodlens.sqlite3 \
+    MOODLENS_DLT_DB_PATH=/app/runtime/moodlens_pipeline.duckdb \
     MOODLENS_ARTIFACTS_DIR=/app/artifacts
 
 WORKDIR /app

@@ -8,10 +8,10 @@ from pathlib import Path
 from .chunking import chunk_documents
 from .config import Settings
 from .database import Database
-from .dlt_pipeline import load_documents_locally
+from .dlt_pipeline import LocalPipelineResult, load_demo_source, load_document_resource
 from .embeddings import Embedder, make_embedder
 from .models import Document
-from .sample_data import demo_documents
+from .sample_data import demo_source_path
 from .tmdb import download_documents
 
 
@@ -35,30 +35,23 @@ def _write_documents(path: Path, documents: Sequence[Document]) -> None:
             )
 
 
-def ingest_documents(
-    documents: Sequence[Document],
+def _index_pipeline_result(
+    result: LocalPipelineResult,
     *,
     source: str,
+    created_at: str,
+    run_id: str,
     config: Settings,
-    embedder: Embedder | None = None,
+    embedder: Embedder | None,
 ) -> dict[str, object]:
-    if not documents:
-        raise ValueError("Cannot ingest an empty corpus")
+    documents = result.documents
     chunks = chunk_documents(
         documents, words=config.chunk_words, overlap=config.chunk_overlap
     )
     if not chunks:
-        raise ValueError("The corpus did not produce any searchable chunks")
+        raise ValueError("The dlt dataset did not produce any searchable chunks")
     encoder = embedder or make_embedder(config.embedding_backend, config.embedding_model)
     matrix = encoder.documents([chunk.text for chunk in chunks])
-    created_at = _timestamp()
-    run_id = _run_id(created_at)
-    dlt_result = load_documents_locally(
-        documents,
-        destination_dir=config.artifacts_dir / "dlt",
-        pipelines_dir=config.artifacts_dir / "dlt_state",
-        run_id=run_id,
-    )
     Database(config.database_path).replace_corpus(
         run_id=run_id,
         source=source,
@@ -68,6 +61,7 @@ def ingest_documents(
         embeddings=matrix,
         embedding_model=getattr(encoder, "model_name", config.embedding_model),
     )
+
     run_dir = config.artifacts_dir / "corpora" / run_id
     _write_documents(run_dir / "documents.jsonl", documents)
     with (run_dir / "chunks.jsonl").open("w", encoding="utf-8", newline="") as handle:
@@ -94,7 +88,7 @@ def ingest_documents(
         "embedding_model": getattr(encoder, "model_name", config.embedding_model),
         "embedding_dimensions": int(matrix.shape[1]),
         "database": str(config.database_path),
-        "dlt": dlt_result,
+        "dlt": result.metadata,
     }
     (run_dir / "manifest.json").write_text(
         json.dumps(manifest, indent=2, ensure_ascii=False), encoding="utf-8"
@@ -102,8 +96,40 @@ def ingest_documents(
     return manifest
 
 
+def ingest_documents(
+    documents: Sequence[Document],
+    *,
+    source: str,
+    config: Settings,
+    embedder: Embedder | None = None,
+) -> dict[str, object]:
+    created_at = _timestamp()
+    run_id = _run_id(created_at)
+    result = load_document_resource(
+        documents, source=source, config=config, run_id=run_id
+    )
+    return _index_pipeline_result(
+        result,
+        source=source,
+        created_at=created_at,
+        run_id=run_id,
+        config=config,
+        embedder=embedder,
+    )
+
+
 def ingest_demo(config: Settings, *, embedder: Embedder | None = None) -> dict[str, object]:
-    return ingest_documents(demo_documents(), source="demo", config=config, embedder=embedder)
+    created_at = _timestamp()
+    run_id = _run_id(created_at)
+    result = load_demo_source(demo_source_path(), config=config, run_id=run_id)
+    return _index_pipeline_result(
+        result,
+        source="demo",
+        created_at=created_at,
+        run_id=run_id,
+        config=config,
+        embedder=embedder,
+    )
 
 
 def ingest_tmdb(config: Settings, *, embedder: Embedder | None = None) -> dict[str, object]:

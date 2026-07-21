@@ -52,6 +52,7 @@ class Settings:
     chunk_words: int
     chunk_overlap: int
     database_path: Path
+    dlt_database_path: Path
     artifacts_dir: Path
 
 
@@ -76,6 +77,9 @@ def settings() -> Settings:
         chunk_words=_integer("CHUNK_WORDS", 180),
         chunk_overlap=int(os.getenv("CHUNK_OVERLAP", "30")),
         database_path=_path("MOODLENS_DB_PATH", "runtime/moodlens.sqlite3"),
+        dlt_database_path=_path(
+            "MOODLENS_DLT_DB_PATH", "runtime/moodlens_pipeline.duckdb"
+        ),
         artifacts_dir=_path("MOODLENS_ARTIFACTS_DIR", "artifacts"),
     )
     if result.chunk_overlap < 0 or result.chunk_overlap >= result.chunk_words:

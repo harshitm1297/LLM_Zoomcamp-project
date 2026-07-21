@@ -8,7 +8,8 @@ version = "0.1.0"
 description = "A local-first RAG assistant for exploring stories and cultural themes"
 requires-python = ">=3.12"
 dependencies = [
-  "dlt==1.29.0",
+  "dlt[duckdb]==1.29.0",
+  "duckdb==1.5.4",
   "groq==1.5.0",
   "numpy==2.4.3",
   "pandas==3.0.3",

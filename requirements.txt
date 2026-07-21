@@ -1,4 +1,5 @@
-dlt==1.29.0
+dlt[duckdb]==1.29.0
+duckdb==1.5.4
 groq==1.5.0
 numpy==2.4.3
 pandas==3.0.3

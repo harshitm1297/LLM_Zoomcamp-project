@@ -12,6 +12,7 @@ services:
       PROMPT_VARIANT: ${PROMPT_VARIANT:-strict}
       RETRIEVAL_TOP_K: ${RETRIEVAL_TOP_K:-5}
       RETRIEVAL_STRATEGY: ${RETRIEVAL_STRATEGY:-bm25}
+      MOODLENS_DLT_DB_PATH: /app/runtime/moodlens_pipeline.duckdb
     volumes:
       - moodlens-runtime:/app/runtime
       - moodlens-artifacts:/app/artifacts
@@ -31,6 +32,7 @@ services:
       TMDB_TV_LIMIT: ${TMDB_TV_LIMIT:-100}
       EMBEDDING_BACKEND: ${EMBEDDING_BACKEND:-sentence-transformers}
       EMBEDDING_MODEL: ${EMBEDDING_MODEL:-BAAI/bge-small-en-v1.5}
+      MOODLENS_DLT_DB_PATH: /app/runtime/moodlens_pipeline.duckdb
     volumes:
       - moodlens-runtime:/app/runtime
       - moodlens-artifacts:/app/artifacts
