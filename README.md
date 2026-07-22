@@ -333,7 +333,6 @@ Cloud deployment is intentionally out of scope and no deployment points are clai
 | Hybrid search | BM25 + vector reciprocal-rank fusion implemented and evaluated | 1/1 |
 | Document reranking | Vector candidates metadata/lexical reranked and evaluated | 1/1 |
 | Query rewriting | Deterministic domain expansion enabled and unit-tested | 1/1 |
-| Cloud deployment | Explicitly excluded | 0 bonus |
 
 The target is **21/21 non-cloud points**. Peer reviewers make the final score.
 
