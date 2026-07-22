@@ -33,6 +33,6 @@ where = ["src"]
 select = ["E", "F", "I", "UP", "B"]
 
 [tool.ruff.lint.per-file-ignores]
-"app.py" = ["E402"]
+"Cultural_Mood_Tracker.py" = ["E402"]
 "pages/*.py" = ["E402"]
 "scripts/*.py" = ["E402"]

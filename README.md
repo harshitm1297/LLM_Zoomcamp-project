@@ -1,5 +1,7 @@
 # Cultural Mood Tracker
 
+[![tests](https://github.com/harshitm1297/LLM_Zoomcamp-project/actions/workflows/tests.yml/badge.svg)](https://github.com/harshitm1297/LLM_Zoomcamp-project/actions/workflows/tests.yml)
+
 Cultural Mood Tracker is a local-first retrieval-augmented generation application for exploring plots,
 emotions, and cultural themes in film and television descriptions. It retrieves relevant passages
 from a local SQLite knowledge base, asks a Groq-hosted language model to answer only from that
@@ -79,10 +81,11 @@ Run the automated dlt ingestion and indexing pipeline, then start Streamlit:
 
 ```powershell
 python scripts\ingest.py --source demo
-streamlit run app.py
+streamlit run Cultural_Mood_Tracker.py
 ```
 
-Open `http://localhost:8501`. Streamlit navigation contains the monitoring page.
+Open `http://localhost:8501`. Streamlit navigation contains the monitoring and corpus-pipeline
+pages.
 
 ## Application examples
 
@@ -158,7 +161,7 @@ machine, the complete application and deterministic benchmark can run without a 
 ```powershell
 $env:EMBEDDING_BACKEND="hashing"
 python scripts\ingest.py --source demo
-streamlit run app.py
+streamlit run Cultural_Mood_Tracker.py
 ```
 
 The hashing backend uses stable word and bigram feature hashing. It is lexical and the committed
@@ -269,7 +272,7 @@ without duplicates. GitHub Actions runs both isolated dlt/DuckDB integration tes
 ## Repository layout
 
 ```text
-app.py                         Streamlit chat
+Cultural_Mood_Tracker.py       Streamlit chat and branded primary page
 pages/1_Monitoring.py          Local monitoring dashboard with six charts
 pages/2_Corpus_Pipeline.py     Read-only dashboard over the attached dlt dataset
 data/corpus/                   Versioned zero-credential JSONL source
@@ -334,12 +337,13 @@ Cloud deployment is intentionally out of scope and no deployment points are clai
 
 The target is **21/21 non-cloud points**. Peer reviewers make the final score.
 
-## Provenance and AI-assistance disclosure
+## Development and attribution
 
-This is a new learning and disclosed portfolio implementation inspired by the public
-[DataTalksClub LLM Zoomcamp](https://github.com/DataTalksClub/llm-zoomcamp) curriculum. It was created
-with substantial assistance from OpenAI Codex, including architecture, implementation, tests, and
-documentation. It should not be represented as unaided work.
+This is a new learning and portfolio implementation inspired by the public
+[DataTalksClub LLM Zoomcamp](https://github.com/DataTalksClub/llm-zoomcamp) curriculum. Development
+used OpenAI Codex as an AI-assisted software-engineering tool for architecture, implementation,
+testing, and documentation. The repository owner remains responsible for reviewing, running, and
+understanding the submitted work.
 
 The source files were not copied from the earlier `pop-culture-detective` or `final-project`
 repositories. The general subject—RAG over film and television information—was retained, while the
